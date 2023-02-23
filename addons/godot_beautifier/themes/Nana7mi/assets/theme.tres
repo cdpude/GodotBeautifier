@@ -1,0 +1,155 @@
+[gd_resource type="Theme" load_steps=22 format=2]
+
+[sub_resource type="StyleBoxFlat" id=18]
+bg_color = Color( 0.235294, 0.247059, 0.309804, 0.901961 )
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.101961, 0.105882, 0.117647, 0.901961 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color( 0.109804, 0.109804, 0.109804, 0.505882 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.137255, 0.12549, 0.117647, 0.792157 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 1.0
+bg_color = Color( 0.137255, 0.12549, 0.101961, 0.843137 )
+
+[sub_resource type="StyleBoxFlat" id=54]
+content_margin_left = 4.5
+content_margin_right = 4.5
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.121569, 0.12549, 0.137255, 0.890196 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.52549, 0.619608, 0.760784, 0.188235 )
+
+[sub_resource type="StyleBoxEmpty" id=55]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.101961, 0.105882, 0.117647, 0.901961 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color( 0.0784314, 0.0823529, 0.0941176, 0.478431 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color( 0.0784314, 0.0823529, 0.0941176, 0.854902 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.145098, 0.152941, 0.196078, 0.917647 )
+border_width_bottom = 4
+border_color = Color( 0.0823529, 0.0823529, 0.0980392, 0.917647 )
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0.145098, 0.152941, 0.196078, 0.917647 )
+border_width_bottom = 4
+border_color = Color( 0.0823529, 0.0823529, 0.0980392, 0.917647 )
+expand_margin_left = 2.0
+expand_margin_right = 2.0
+expand_margin_top = 1.0
+expand_margin_bottom = 3.0
+shadow_size = 1
+
+[sub_resource type="StyleBoxEmpty" id=32]
+
+[sub_resource type="StyleBoxEmpty" id=33]
+
+[sub_resource type="StyleBoxFlat" id=51]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.52549, 0.619608, 0.760784, 0.188235 )
+
+[sub_resource type="StyleBoxFlat" id=40]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0.427451, 0.588235, 0.831373, 0.2 )
+border_color = Color( 0.160784, 0.164706, 0.180392, 0.854902 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.109804, 0.113725, 0.12549, 0.972549 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_top = 24.0
+shadow_color = Color( 0.176471, 0.188235, 0.243137, 0.6 )
+shadow_size = 1000
+
+[resource]
+EditorStyles/styles/Background = SubResource( 18 )
+EditorStyles/styles/BottomPanelDebuggerOverride = SubResource( 20 )
+EditorStyles/styles/Content = SubResource( 3 )
+EditorStyles/styles/DebuggerPanel = SubResource( 3 )
+EditorStyles/styles/DebuggerTabBG = SubResource( 6 )
+EditorStyles/styles/DebuggerTabFG = SubResource( 5 )
+EditorStyles/styles/SceneTabBG = SubResource( 6 )
+EditorStyles/styles/SceneTabFG = SubResource( 5 )
+LineEdit/colors/selection_color = Color( 0.427451, 0.588235, 0.831373, 0.2 )
+LineEdit/styles/focus = SubResource( 54 )
+LineEdit/styles/normal = SubResource( 55 )
+Panel/styles/panel = SubResource( 3 )
+RichTextLabel/colors/default_color = Color( 0.643137, 0.709804, 0.847059, 0.964706 )
+RichTextLabel/colors/selection_color = Color( 0.0901961, 0.0862745, 0.0823529, 0.933333 )
+RichTextLabel/styles/focus = SubResource( 15 )
+RichTextLabel/styles/normal = SubResource( 14 )
+TabContainer/styles/panel = SubResource( 7 )
+TabContainer/styles/tab_bg = SubResource( 11 )
+TabContainer/styles/tab_fg = SubResource( 12 )
+Tabs/colors/font_color_bg = Color( 0.839216, 0.882353, 0.882353, 1 )
+Tabs/colors/font_color_fg = Color( 0.87451, 0.854902, 0.839216, 1 )
+Tabs/styles/tab_bg = SubResource( 6 )
+Tabs/styles/tab_fg = SubResource( 5 )
+TextEdit/styles/completion = SubResource( 21 )
+TextEdit/styles/focus = SubResource( 16 )
+TextEdit/styles/normal = SubResource( 2 )
+TooltipLabel/colors/font_color = Color( 0.572549, 0.643137, 0.784314, 0.964706 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipPanel/styles/panel = SubResource( 19 )
+Tree/colors/custom_button_font_highlight = Color( 0.94, 0.94, 0.94, 1 )
+Tree/colors/drop_position_color = Color( 1, 0.3, 0.2, 1 )
+Tree/colors/font_color = Color( 0.69, 0.69, 0.69, 1 )
+Tree/colors/font_color_selected = Color( 1, 1, 1, 1 )
+Tree/colors/guide_color = Color( 0, 0, 0, 0.101961 )
+Tree/colors/relationship_line_color = Color( 0, 0, 0, 0.101961 )
+Tree/colors/title_button_color = Color( 0.88, 0.88, 0.88, 1 )
+Tree/styles/bg = SubResource( 32 )
+Tree/styles/bg_focus = SubResource( 33 )
+Tree/styles/cursor = SubResource( 51 )
+Tree/styles/cursor_unfocused = SubResource( 51 )
+Tree/styles/selected = SubResource( 40 )
+Tree/styles/selected_focus = SubResource( 40 )
+WindowDialog/styles/panel = SubResource( 17 )
