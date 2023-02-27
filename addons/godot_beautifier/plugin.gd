@@ -31,7 +31,7 @@ func _enter_tree():
 	## Add tool menu. ##
 	
 	## Add settings panel. ##
-	_SettingsPanel = preload("res://addons/godot_beautifier/src/settings_panel.tscn").instance()
+	_SettingsPanel = preload("src/settings_panel.tscn").instance()
 	_SettingsPanel.Main = self
 	get_editor_interface().get_base_control().add_child(_SettingsPanel)
 	## Add settings panel. ##
