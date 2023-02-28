@@ -14,6 +14,6 @@ func _enter_tree():
 	set_text_editor_colors_by_cfg(get_file("assets/Night-Breeze.tet"))
 #	set_text_editor_color("background_color", Color("#f51d1d1d"))
 	
-	add_background_music(get_random_file("startup_sounds"), false)
+#	add_background_music(get_random_file("startup_sounds"), false)
 	
 	set_project_setting("rendering/environment/default_clear_color", Color("e81d1d1d"))
