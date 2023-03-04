@@ -7,6 +7,7 @@ func _enter_tree():
 	set_editor_setting("interface/theme/base_color", Color("da292a2e"))
 	set_editor_setting("interface/theme/accent_color", Color("e3c8cd3c"))
 	set_editor_setting("interface/editor/dim_editor_on_dialog_popup", false)
+	set_editor_setting("text_editor/script_list/current_script_background_color", Color.transparent)
 	
 	set_text_editor_colors_by_cfg(get_file("assets/Nana7mi.tet"))
 	set_text_editor_color("background_color", Color("#00ffffff"))

@@ -46,5 +46,7 @@ code_folding_color="b3ffffff"
 search_result_color="00171615"
 search_result_border_color="629e9590"
 
+code_folding_color="40ffffff"
+
 gdscript/function_definition_color="e3cb818f"
 gdscript/node_path_color="de6a8e66"
