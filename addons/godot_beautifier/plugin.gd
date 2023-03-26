@@ -149,7 +149,8 @@ func clear_local_data() -> void:
 
 func clear_menu() -> void:
 	remove_tool_menu_item("Beautifier")
-	_SettingsPanel.queue_free()
+	if is_instance_valid(_SettingsPanel):
+		_SettingsPanel.queue_free()
 
 
 func clear_plugin_changes() -> void:
