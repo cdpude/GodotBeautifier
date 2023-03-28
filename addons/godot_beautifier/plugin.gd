@@ -53,7 +53,7 @@ func get_version() -> float:
 
 
 func get_editor_data_folder() -> String:
-	return OS.get_data_dir().plus_file("Godot")
+	return OS.get_user_data_dir().get_base_dir().get_base_dir()
 
 
 func get_global_data_path() -> String:
