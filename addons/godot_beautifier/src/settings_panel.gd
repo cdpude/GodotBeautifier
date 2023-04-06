@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 	if ProjectSettings.has_setting(P_EnableRandomTheme):
 		_EnableRandomButton.pressed = ProjectSettings.get_setting(P_EnableRandomTheme)
+		$MarginContainer/VBoxContainer/SetTheme.visible = !_EnableRandomButton.pressed
 	_EnableRandomButton.connect("button_up", self, "_changed", [Key.ENABLE_RANDOM_THEME])
 	
 	if ProjectSettings.has_setting(P_ThemeScript):
