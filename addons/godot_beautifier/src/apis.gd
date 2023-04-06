@@ -29,7 +29,7 @@ func get_editor_setting(p_setting : String):
 
 
 func get_global_data_path() -> String:
-	return OS.get_data_dir().plus_file("Godot/beautifier.cfg")
+	return OS.get_user_data_dir().get_base_dir().get_base_dir().plus_file("beautifier.cfg")
 
 
 func get_local_data_path() -> String:
