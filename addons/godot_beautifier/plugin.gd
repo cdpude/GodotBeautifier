@@ -38,18 +38,18 @@ func _enter_tree() -> void:
 	
 	## Load theme. ##
 	var script_path : String
-	if ProjectSettings.has_setting(_SettingsPanel.P_ThemeScript):
-		script_path = ProjectSettings.get_setting(_SettingsPanel.P_ThemeScript)
-	else:
-		script_path = get_current_dir().plus_file("themes/Night Breeze/theme.gd")
+	if ProjectSettings.has_setting(_SettingsPanel.P_EnableRandomTheme):
+		var random : bool = ProjectSettings.get_setting(_SettingsPanel.P_EnableRandomTheme)
+		if random:
+			script_path = _SettingsPanel.get_random_theme_dir().plus_file("theme.gd")
+		elif ProjectSettings.has_setting(_SettingsPanel.P_ThemeScript):
+			script_path = ProjectSettings.get_setting(_SettingsPanel.P_ThemeScript)
+		else:
+			script_path = get_current_dir().plus_file("themes/Night Breeze/theme.gd")
 	
 	if script_path:
 		load_theme_script(script_path)
 	## Load theme. ##
-
-
-func get_version() -> float:
-	return 1.0
 
 
 func get_editor_data_folder() -> String:
@@ -102,7 +102,6 @@ func load_theme_script(p_path : String) -> void:
 	if script is EditorPlugin:
 		_ThemeScript = script
 		add_child(_ThemeScript)
-		ProjectSettings.set_setting("beautifier/theme_script", p_path)
 
 
 func clear_theme_script() -> void:

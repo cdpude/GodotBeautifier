@@ -22,7 +22,6 @@ size = Vector2( 32, 32 )
 [sub_resource type="StyleBoxEmpty" id=12]
 
 [node name="Settings" type="WindowDialog"]
-visible = true
 margin_right = 400.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 400, 300 )
@@ -72,10 +71,35 @@ text = "
 Godot Beautifier
 Version 1.0.1"
 
-[node name="SetTheme" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="EnableRandom" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 84.0
 margin_right = 380.0
-margin_bottom = 118.0
+margin_bottom = 122.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/EnableRandom"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 373.0
+margin_bottom = 31.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/EnableRandom/HBoxContainer"]
+margin_top = 5.0
+margin_right = 181.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Enable Random Theme"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/EnableRandom/HBoxContainer"]
+margin_left = 185.0
+margin_right = 366.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "On"
+
+[node name="SetTheme" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 380.0
+margin_bottom = 160.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SetTheme"]
 margin_left = 7.0
@@ -96,14 +120,14 @@ margin_right = 366.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
-text = "Night Breeze"
+text = "Web Light"
 align = 0
 items = [ "cool_black", null, 0, false, false, 0, 0, "res://addons/godot_beautifier/cool_black", "", false, "nana7mi", null, 0, false, false, 1, 0, "res://addons/godot_beautifier/nana7mi", "", false, "night_breeze", null, 0, false, false, 2, 0, "res://addons/godot_beautifier/night_breeze", "", false ]
 
 [node name="Github" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 122.0
+margin_top = 164.0
 margin_right = 380.0
-margin_bottom = 150.0
+margin_bottom = 192.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Github"]
 margin_left = 7.0
@@ -125,3 +149,4 @@ focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 text = "Github"
+underline = 1
