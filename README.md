@@ -11,6 +11,7 @@
 <span id="1"/>
 
 ## 🎉 ***Installation***
+
 Download the plugin and add the `addons/godot_beautifier` folder in your project's `addons` folder.
 
 Then go to `Project` -> `Project Settings...` -> `Plugins` and enable it.
