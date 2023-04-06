@@ -1,42 +1,54 @@
 tool
 extends WindowDialog
 
+enum Key {SET_THEME, OPEN_GITHUB}
+
 var Main : EditorPlugin
 var theme_id := -1
 var P_ThemeScript := "beautifier/theme_script"
 
 onready var _EditorSettings : EditorSettings
-onready var _ThemeButton := $MarginContainer/VBoxContainer/MenuButton
+onready var _ThemeButton := $MarginContainer/VBoxContainer/SetTheme/HBoxContainer/MenuButton
 onready var _ThemePopup : PopupMenu = _ThemeButton.get_popup()
-onready var _GithubButton := $MarginContainer/VBoxContainer/Button
+onready var _GithubButton := $MarginContainer/VBoxContainer/Github/HBoxContainer/LinkButton
 
 
 func _ready() -> void:
 	if Main:
 		_EditorSettings = Main.get_editor_interface().get_editor_settings()
 	
-	_ThemePopup.connect("about_to_show", self, "_on_theme_popup_show")
-	_ThemePopup.connect("id_pressed", self, "_on_theme_id_pressed")
-	_GithubButton.connect("button_up", self, "_on_github_button_up")
-
-
-func _on_theme_popup_show() -> void:
-	setup_theme_menu()
-
-
-func _on_theme_id_pressed(p_id : int) -> void:
-	var idx := _ThemePopup.get_item_index(p_id)
-	var theme_dir : String = _ThemePopup.get_item_metadata(idx)
-	var script_path := theme_dir.plus_file("theme.gd")
+	_ThemeButton.text = str(ProjectSettings.get_setting(P_ThemeScript)).get_base_dir().get_file()
 	
-	Main.load_theme_script(script_path)
-	_ThemeButton.text = str(script_path.get_base_dir().get_file())
+	_ThemePopup.connect("about_to_show", self, "_setup", [Key.SET_THEME])
+	_ThemePopup.connect("id_pressed", self, "_on_id_pressed", [Key.SET_THEME])
+	
+	_GithubButton.connect("button_up", self, "_changed", [Key.OPEN_GITHUB])
 
 
-func setup_theme_menu() -> void:
-	_ThemePopup.clear()
-	for path in get_theme_list():
-		add_theme(path)
+func _changed(p_key : int, p_value = null) -> void:
+	match p_key:
+		Key.SET_THEME:
+			var idx := _ThemePopup.get_item_index(p_value)
+			var theme_dir : String = _ThemePopup.get_item_metadata(idx)
+			var script_path := theme_dir.plus_file("theme.gd")
+			
+			Main.load_theme_script(script_path)
+			_ThemeButton.text = str(script_path.get_base_dir().get_file())
+		
+		Key.OPEN_GITHUB:
+			OS.shell_open("https://github.com/cdpude/GodotBeautifier")
+
+
+func _setup(p_key : int) -> void:
+	match p_key:
+		Key.SET_THEME:
+			_ThemePopup.clear()
+			for path in get_theme_list():
+				add_theme(path)
+
+
+func _on_id_pressed(p_id : int, p_key : int) -> void:
+	_changed(p_key, p_id)
 
 
 func get_current_dir() -> String:
@@ -79,7 +91,3 @@ func add_theme(p_path : String) -> void:
 	_ThemePopup.add_item(p_path.get_file(), theme_id)
 	var idx := _ThemePopup.get_item_index(theme_id)
 	_ThemePopup.set_item_metadata(idx, p_path)
-
-
-func _on_github_button_up() -> void:
-	OS.shell_open("https://github.com/cdpude/GodotBeautifier")
