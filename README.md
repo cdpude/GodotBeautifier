@@ -28,6 +28,8 @@ Open the settings panel by pressing `Project` -> `Tools` -> `Beautifier` -> `Set
 
 If you want to clear everything done by this plugin, please press `Project` -> `Tools` -> `Beautifier` -> `Clear all changes`.
 
+For more information, please see [Wiki](https://github.com/cdpude/GodotBeautifier/wiki).
+
 <span id="4"/>
 
 ## ☃️ ***Effects***
