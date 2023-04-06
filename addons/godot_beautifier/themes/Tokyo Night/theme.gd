@@ -1,7 +1,7 @@
 extends BeautifierAPI
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	set_editor_setting("interface/theme/base_color", Color("181822"))
 	set_editor_setting("interface/theme/accent_color", Color("6e738e"))
 	set_editor_setting("interface/theme/additional_spacing", 4)

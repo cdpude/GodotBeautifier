@@ -1,7 +1,7 @@
 extends BeautifierAPI
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	set_editor_setting("interface/theme/custom_theme", get_system_file("assets/theme.tres"))
 	set_editor_setting("interface/editor/code_font", get_system_file("assets/lucida typewriter.ttf"))
 	set_editor_setting("interface/theme/base_color", Color("da292a2e"))

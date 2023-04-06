@@ -1,7 +1,7 @@
 extends BeautifierAPI
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	set_editor_setting("interface/theme/icon_and_font_color", 0)
 	set_editor_setting("interface/theme/base_color", Color("e1292825"))
 	set_editor_setting("interface/theme/accent_color", Color("bfb68a3d"))

@@ -9,7 +9,7 @@ var _SettingsPanel : SettingsPanel
 enum MenuID {SETTINGS, OPEN_DATA_FILE, OPEN_DATA_FOLDER, CLEAR_ALL_CHANGES}
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	## Detect godot data folder. ##
 	var dir := Directory.new()
 	if !dir.dir_exists(get_editor_data_folder()):

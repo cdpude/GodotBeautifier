@@ -11,7 +11,7 @@ onready var _ThemePopup : PopupMenu = _ThemeButton.get_popup()
 onready var _GithubButton := $MarginContainer/VBoxContainer/Button
 
 
-func _ready():
+func _ready() -> void:
 	if Main:
 		_EditorSettings = Main.get_editor_interface().get_editor_settings()
 	

@@ -11,7 +11,7 @@ var custom_preset := false
 var custom_colors := false
 
 
-func _enter_tree():
+func _enter_tree() -> void:
 	_EditorSettings = get_editor_interface().get_editor_settings()
 	_EditorPanel = get_editor_interface().get_base_control()
 
