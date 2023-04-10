@@ -106,8 +106,6 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 expand_margin_top = 24.0
-shadow_color = Color( 0.176471, 0.188235, 0.243137, 0.6 )
-shadow_size = 1000
 
 [resource]
 EditorStyles/styles/Background = SubResource( 18 )
