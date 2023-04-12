@@ -14,6 +14,4 @@ func _enter_tree() -> void:
 	
 	add_background_video(get_editor_panel(), get_file("assets/nana7mi.ogv"))
 	
-#	add_node(get_editor_panel(), get_file("scenes/kanban.tscn"))
-	
 	set_project_setting("rendering/environment/default_clear_color", Color("#28282d"))
