@@ -34,7 +34,7 @@ For more information, please see [Wiki](https://github.com/cdpude/GodotBeautifie
 
 ## ☃️ ***Effects***
 
-| [Night Breeze](#5) | [Cool Black](#6) | [Nana7mi](#7) | [Tokyo Night](#8) |
+| [Night Breeze](#5) | [Cool Black](#6) | [Nana7mi](#7) | [Tokyo Night](#8) | [Web Light](#9) |
 
 > ### Night Breeze
 > default
@@ -55,3 +55,8 @@ For more information, please see [Wiki](https://github.com/cdpude/GodotBeautifie
 > hazy and comfortable
 <span id="8"/>
 <img src="https://user-images.githubusercontent.com/122121703/221433847-b0030bd9-33d9-46de-abf7-e5070b6ea07f.png">
+
+> ### Web Light
+> suitable for bright environments
+<span id="9">
+<img src="https://user-images.githubusercontent.com/122121703/231553855-8fb6fa81-750d-4bf3-a2b2-a93d5b624574.png">
