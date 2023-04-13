@@ -22,6 +22,7 @@ size = Vector2( 32, 32 )
 [sub_resource type="StyleBoxEmpty" id=12]
 
 [node name="Settings" type="WindowDialog"]
+visible = true
 margin_right = 400.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 400, 300 )
@@ -66,10 +67,10 @@ custom_styles/normal = SubResource( 12 )
 bbcode_enabled = true
 bbcode_text = "
 [rainbow freq=0.2 sat=0.4]Godot Beautifier[/rainbow]
-Version 1.0.1"
+Version 1.0.2"
 text = "
 Godot Beautifier
-Version 1.0.1"
+Version 1.0.2"
 
 [node name="EnableRandom" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 84.0
