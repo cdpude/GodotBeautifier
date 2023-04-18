@@ -38,14 +38,12 @@ func _enter_tree() -> void:
 	
 	## Load theme. ##
 	var script_path : String
-	if ProjectSettings.has_setting(_SettingsPanel.P_EnableRandomTheme):
-		var random : bool = ProjectSettings.get_setting(_SettingsPanel.P_EnableRandomTheme)
-		if random:
-			script_path = _SettingsPanel.get_random_theme_dir().plus_file("theme.gd")
-		elif ProjectSettings.has_setting(_SettingsPanel.P_ThemeScript):
-			script_path = ProjectSettings.get_setting(_SettingsPanel.P_ThemeScript)
-		else:
-			script_path = get_current_dir().plus_file("themes/Night Breeze/theme.gd")
+	if ProjectSettings.has_setting(_SettingsPanel.P_EnableRandomTheme) && ProjectSettings.get_setting(_SettingsPanel.P_EnableRandomTheme):
+		script_path = _SettingsPanel.get_random_theme_dir().plus_file("theme.gd")
+	elif ProjectSettings.has_setting(_SettingsPanel.P_ThemeScript):
+		script_path = ProjectSettings.get_setting(_SettingsPanel.P_ThemeScript)
+	else:
+		script_path = get_current_dir().plus_file("themes/Night Breeze/theme.gd")
 	
 	if script_path:
 		load_theme_script(script_path)
