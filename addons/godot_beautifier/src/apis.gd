@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 class_name BeautifierAPI
 
@@ -29,11 +29,11 @@ func get_editor_setting(p_setting : String):
 
 
 func get_global_data_path() -> String:
-	return OS.get_user_data_dir().get_base_dir().get_base_dir().plus_file("beautifier.cfg")
+	return OS.get_user_data_dir().get_base_dir().get_base_dir().path_join("beautifier-2.cfg")
 
 
 func get_local_data_path() -> String:
-	return ProjectSettings.globalize_path("res://").plus_file("project.godot")
+	return ProjectSettings.globalize_path("res://").path_join("project.godot")
 
 
 func get_current_dir() -> String:
@@ -42,7 +42,7 @@ func get_current_dir() -> String:
 
 
 func get_file(p_path : String) -> String:
-	return get_current_dir().plus_file(p_path)
+	return get_current_dir().path_join(p_path)
 
 
 func get_system_file(p_path : String) -> String:
@@ -50,51 +50,57 @@ func get_system_file(p_path : String) -> String:
 
 
 func get_random_file(p_path : String) -> String:
-	var dir := Directory.new()
+	var dir := DirAccess.open(p_path)
 	var file_list := []
-	var path := get_current_dir().plus_file(p_path)
+	var path := get_current_dir().path_join(p_path)
 	
-	if dir.open(path) == OK:
-		dir.list_dir_begin(true, true)
+	if dir:
+		dir.include_hidden = false
+		dir.include_navigational = false
+		dir.list_dir_begin()
+		
 		var file_name := dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir() && file_name.get_extension() != "import":
 				file_list.append(file_name)
 			file_name = dir.get_next()
 	
-	return path.plus_file(file_list[randi() % file_list.size()])
+	return path.path_join(file_list[randi() % file_list.size()])
 
 
 func get_random_dir(p_path : String) -> String:
-	var dir := Directory.new()
+	var dir := DirAccess.open(p_path)
 	var dir_list := []
-	var path := get_current_dir().plus_file(p_path)
+	var path := get_current_dir().path_join(p_path)
 	
-	if dir.open(path) == OK:
-		dir.list_dir_begin(true, true)
+	if dir:
+		dir.include_hidden = false
+		dir.include_navigational = false
+		dir.list_dir_begin()
+		
 		var dir_name := dir.get_next()
 		while dir_name != "":
 			if dir.current_is_dir():
 				dir_list.append(dir_name)
 			dir_name = dir.get_next()
 	
-	return path.plus_file(dir_list[randi() % dir_list.size()])
+	return path.path_join(dir_list[randi() % dir_list.size()])
 
 
 func send_message(p_text : String, p_title := "Message", p_anchor := 0, p_size := Vector2()) -> void:
-	var dialog := WindowDialog.new()
+	var dialog := Window.new()
 	dialog.window_title = p_title
 	
 	var label := Label.new()
 	label.anchor_right = 1 ; label.anchor_bottom = 1
-	label.align = Label.ALIGN_CENTER
-	label.valign = Label.VALIGN_CENTER
+	label.align = Label.PRESET_CENTER
+	label.valign = Label.PRESET_VCENTER_WIDE
 	label.autowrap = true
 	label.clip_text = true
 	label.text = p_text
 	
 	dialog.add_child(label)
-	dialog.connect("hide", self, "_on_message_dialog_hide", [dialog])
+	dialog.close_requested.connect(_on_message_dialog_hide.bind(dialog))
 	get_editor_panel().add_child(dialog)
 	
 	if p_size == Vector2():
@@ -107,7 +113,7 @@ func send_message(p_text : String, p_title := "Message", p_anchor := 0, p_size :
 			dialog.popup(Rect2(get_editor_panel().rect_size - p_size - Vector2(10, 10), p_size))
 
 
-func _on_message_dialog_hide(p_dialog : WindowDialog) -> void:
+func _on_message_dialog_hide(p_dialog : Window) -> void:
 	p_dialog.queue_free()
 
 
@@ -132,7 +138,7 @@ func add_background_image(p_control : Control, p_path : String, p_stretch_mode :
 
 
 func add_background_video(p_control : Control, p_path : String, p_loop := true, p_volumn := 0) -> void:
-	var video_player := VideoPlayer.new()
+	var video_player := VideoStreamPlayer.new()
 	nodes.append(video_player)
 	
 	video_player.anchor_bottom = 1
@@ -142,7 +148,7 @@ func add_background_video(p_control : Control, p_path : String, p_loop := true, 
 	video_player.volume = p_volumn
 	
 	if p_loop:
-		var error := video_player.connect("finished", self, "_on_video_player_finished", [video_player])
+		video_player.finished.connect(_on_video_player_finished.bind(video_player))
 	
 	p_control.add_child(video_player)
 	p_control.move_child(video_player, 0)
@@ -150,7 +156,7 @@ func add_background_video(p_control : Control, p_path : String, p_loop := true, 
 	video_player.play()
 
 
-func _on_video_player_finished(p_video_player : VideoPlayer) -> void:
+func _on_video_player_finished(p_video_player : VideoStreamPlayer) -> void:
 	p_video_player.play()
 
 
@@ -161,15 +167,15 @@ func add_background_music(p_path : String,  p_loop := true, p_volumn_db := 0.0) 
 	music_player.stream = music_stream
 	music_player.volume_db = p_volumn_db
 	
-	if music_stream is AudioStreamMP3 || music_stream is AudioStreamOGGVorbis:
+	if music_stream is AudioStreamMP3 || music_stream is AudioStreamOggVorbis:
 		music_stream.loop = p_loop
-	elif music_stream is AudioStreamSample:
+	elif music_stream is AudioStreamWAV:
 		if p_loop:
-			music_stream.set_loop_mode(AudioStreamSample.LOOP_FORWARD)
+			music_stream.set_loop_mode(AudioStreamWAV.LOOP_FORWARD)
 		else:
-			music_stream.set_loop_mode(AudioStreamSample.LOOP_DISABLED)
+			music_stream.set_loop_mode(AudioStreamWAV.LOOP_DISABLED)
 	
-	var error := music_player.connect("finished", self, "_on_music_player_finished", [music_player])
+	music_player.finished.connect(_on_music_player_finished.bind(music_player))
 	
 	add_child(music_player)
 	
@@ -185,7 +191,7 @@ func set_editor_setting(p_setting : String, p_value) -> void:
 	if !custom_preset && p_setting.begins_with("interface/theme/"):
 		_set_editor_setting("interface/theme/preset", "Custom")
 		custom_preset = true
-	elif !custom_colors && p_setting.begins_with("text_editor/highlighting/"):
+	elif !custom_colors && p_setting.begins_with("text_editor/theme/highlighting/"):
 		_set_editor_setting("text_editor/theme/color_theme", "Custom")
 		custom_colors = true
 	_set_editor_setting(p_setting, p_value)
@@ -220,6 +226,8 @@ func set_project_setting(p_setting : String, p_value) -> void:
 		
 		if p_value != old_value:
 			ProjectSettings.set_setting(p_setting, p_value)
+		
+		ProjectSettings.save()
 
 
 func set_text_editor_color(p_name : String, p_color : Color) -> void:
@@ -229,7 +237,7 @@ func set_text_editor_color(p_name : String, p_color : Color) -> void:
 func set_text_editor_colors(p_dict : Dictionary) -> void:
 	for key in p_dict:
 		if key is String && p_dict[key] is String:
-			set_editor_setting("text_editor/highlighting/" + key, Color("#" + p_dict[key]))
+			set_editor_setting("text_editor/theme/highlighting/" + key, Color(p_dict[key]))
 
 
 func set_text_editor_colors_by_cfg(p_path : String, p_section := "color_theme") -> void:
@@ -266,11 +274,11 @@ func set_text_editor_colors_by_cfg(p_path : String, p_section := "color_theme") 
 
 
 func file_exists(p_path : String) -> bool:
-	return File.new().file_exists(p_path)
+	return FileAccess.file_exists(p_path)
 
 
 func dir_exists(p_path : String) -> bool:
-	return Directory.new().dir_exists(p_path)
+	return DirAccess.dir_exists_absolute(p_path)
 
 
 func store_global_data(p_key : String, p_value) -> void:
